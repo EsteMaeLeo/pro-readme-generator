@@ -1,13 +1,113 @@
 // TODO: Include packages needed for this application
+const fs = require("fs");
 
+const inquirer = require("inquirer");
 // TODO: Create an array of questions for user input
-const questions = [];
+//const questions = [];
 
+const questions = () => {
+  return inquirer.prompt([
+    {
+      type: "input",
+      name: "github",
+      message: "What is your GitHub username?",
+      validate: (gituserInput) => {
+        if (gituserInput) {
+          return true;
+        } else {
+          console.log("Please enter your GitHub Username!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is yoru email address?",
+      validate: (gitUserMail) => {
+        if (gitUserMail) {
+          return true;
+        } else {
+          console.log("Please enter your email!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "title",
+      message: "What is the name of your project",
+      validate: (projectTitle) => {
+        if (projectTitle) {
+          return true;
+        } else {
+          console.log("Please enter your name of your project!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "description",
+      message: "Provide a description of the project",
+      validate: (descriptionInput) => {
+        if (descriptionInput) {
+          return true;
+        } else {
+          console.log("Please enter your description of the project!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "list",
+      name: "license",
+      message: "What kind of license should your project have?",
+      choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
+    },
+    {
+      type: "input",
+      name: "dependencies",
+      message: "What command should be run to install dependencies? ",
+      validate: (dependenciesInput) => {
+        if (dependenciesInput) {
+          return true;
+        } else {
+          console.log(
+            "Please enter command should be run to install dependencies!"
+          );
+          return false;
+        }
+      },
+    },
+  ]);
+};
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  questions().then((answers) => console.log(answers));
+}
 
 // Function call to initialize app
 init();
+
+// promptUser()
+//   .then(promptProject)
+//   .then((portfolioData) => {
+//     return generatePage(portfolioData);
+//   })
+//   .then((pageHTML) => {
+//     return writeFile(pageHTML);
+//   })
+//   .then((writeFileResponse) => {
+//     console.log(writeFileResponse);
+//     return copyFile();
+//   })
+//   .then((copyFileResponse) => {
+//     console.log(copyFileResponse);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });

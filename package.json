@@ -1,0 +1,25 @@
+{
+  "name": "static-site",
+  "version": "1.0.0",
+  "description": "Professional README Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leonel Morales",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EsteMaeLeo/pro-readme-generator.git"
+  },
+  "keywords": [
+    "README"
+  ],
+  "bugs": {
+    "url": "https://github.com/EsteMaeLeo/pro-readme-generator/issues"
+  },
+  "homepage": "https://github.com/EsteMaeLeo/pro-readme-generator#readme"
+}

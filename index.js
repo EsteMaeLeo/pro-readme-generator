@@ -130,13 +130,23 @@ const questions = () => {
   ]);
 };
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      console.log("File written successfully\n");
+    }
+  });
+}
 
 // TODO: Create a function to initialize app
 function init() {
   questions().then((answers) => {
     console.log(answers);
     const readMe = generateMarkdown(answers);
+    writeToFile(answers);
     console.log(readMe);
   });
 }

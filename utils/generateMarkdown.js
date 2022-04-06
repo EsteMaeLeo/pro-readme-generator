@@ -1,40 +1,128 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  if (!license) {
+    return "";
+  }
+  switch (license) {
+    case "MIT":
+      return "[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)]";
+      break;
+    case "APACHE 2.0":
+      return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]";
+      break;
+    case "GPL 3.0":
+      return "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]";
+      break;
+    case "BSD 3":
+      return "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)]";
+      break;
+    case "None":
+      return "";
+      break;
+    default:
+      return "";
+      break;
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
+function renderLicenseLink(license) {
+  if (!license) {
+    return "";
+  }
+  switch (license) {
+    case "MIT":
+      return "(https://lbesson.mit-license.org/)";
+      break;
+    case "APACHE 2.0":
+      return "(https://opensource.org/licenses/Apache-2.0)";
+      break;
+    case "GPL 3.0":
+      return "(https://www.gnu.org/licenses/gpl-3.0)";
+      break;
+    case "BSD 3":
+      return "(https://opensource.org/licenses/BSD-3-Clause)";
+      break;
+    case "None":
+      return "";
+      break;
+    default:
+      return "";
+      break;
+  }
+}
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (!license) {
+    return "";
+  }
+  switch (license) {
+    case "MIT":
+      return "The project is licensed under the MIT license";
+      break;
+    case "APACHE 2.0":
+      return "The project is licensed under the Apache License";
+      break;
+    case "GPL 3.0":
+      return "The project is licensed under the GNU General Public License";
+      break;
+    case "BSD 3":
+      return "The project is licensed under 3-Clause BSD License";
+      break;
+    case "None":
+      return "None";
+      break;
+    default:
+      return "";
+      break;
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  let badge = renderLicenseBadge(data.license);
+  badge = badge + renderLicenseLink(data.license);
+
+  const renderLicense = renderLicenseSection(data.license);
+  return `
+# ${data.title}
+
+${badge}
   
-  ## Description
+## Description
+### ${data.description}
   
-  ${data.description}:
-  
+## Table of Contents
+
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits)
   - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
 
-  ## Installation
+## Installation
+> To install necessary dependencies, run the following command:
+- ${data.dependencies}
 
-  ## Usage
+## Usage
+>${data.using}
 
-  ## Credits
+## License
+>${renderLicense}
 
-  ## License
+## Contributing
+>${data.contributing}
 
-  ## How to Contribute
+## Tests
+> To run tests, run the following command:
+- ${data.test}
 
-  ## Tests
-
+## Questions
+>If you have any questions about the repo, open an issue or contact me directly at <${data.email}>. Also you can find my excelente work at [${data.github}](https://www.github.com/${data.github})
 `;
 }
 

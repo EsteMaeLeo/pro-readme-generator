@@ -86,11 +86,11 @@ const questions = () => {
     },
     {
       type: "input",
-      name: "dependencies",
+      name: "test",
       default: "npm test",
       message: "What command should be run to run test? ",
-      validate: (dependenciesInput) => {
-        if (dependenciesInput) {
+      validate: (testInput) => {
+        if (testInput) {
           return true;
         } else {
           console.log("Please enter command should be run to  run test!");
@@ -100,10 +100,10 @@ const questions = () => {
     },
     {
       type: "input",
-      name: "dependencies",
+      name: "using",
       message: "What does the user need to know about using the repo? ",
-      validate: (dependenciesInput) => {
-        if (dependenciesInput) {
+      validate: (usingInput) => {
+        if (usingInput) {
           return true;
         } else {
           console.log(
@@ -115,11 +115,11 @@ const questions = () => {
     },
     {
       type: "input",
-      name: "dependencies",
+      name: "contributing",
       message:
         "What does the user need to know about contributing to the repo?",
-      validate: (dependenciesInput) => {
-        if (dependenciesInput) {
+      validate: (contributingInput) => {
+        if (contributingInput) {
           return true;
         } else {
           console.log(
@@ -155,22 +155,3 @@ function init() {
 
 // Function call to initialize app
 init();
-
-// promptUser()
-//   .then(promptProject)
-//   .then((portfolioData) => {
-//     return generatePage(portfolioData);
-//   })
-//   .then((pageHTML) => {
-//     return writeFile(pageHTML);
-//   })
-//   .then((writeFileResponse) => {
-//     console.log(writeFileResponse);
-//     return copyFile();
-//   })
-//   .then((copyFileResponse) => {
-//     console.log(copyFileResponse);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });

@@ -3,6 +3,8 @@ const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const inquirer = require("inquirer");
+
+const fileName = "./dist/README.md";
 // TODO: Create an array of questions for user input
 //const questions = [];
 
@@ -146,7 +148,7 @@ function init() {
   questions().then((answers) => {
     console.log(answers);
     const readMe = generateMarkdown(answers);
-    writeToFile(answers);
+    writeToFile(fileName, readMe);
     console.log(readMe);
   });
 }

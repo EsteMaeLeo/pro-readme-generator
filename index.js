@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const inquirer = require("inquirer");
 // TODO: Create an array of questions for user input
@@ -68,6 +69,7 @@ const questions = () => {
     {
       type: "input",
       name: "dependencies",
+      default: "npm i",
       message: "What command should be run to install dependencies? ",
       validate: (dependenciesInput) => {
         if (dependenciesInput) {
@@ -80,6 +82,51 @@ const questions = () => {
         }
       },
     },
+    {
+      type: "input",
+      name: "dependencies",
+      default: "npm test",
+      message: "What command should be run to run test? ",
+      validate: (dependenciesInput) => {
+        if (dependenciesInput) {
+          return true;
+        } else {
+          console.log("Please enter command should be run to  run test!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "dependencies",
+      message: "What does the user need to know about using the repo? ",
+      validate: (dependenciesInput) => {
+        if (dependenciesInput) {
+          return true;
+        } else {
+          console.log(
+            "Please enter the user need to know about using the repo!"
+          );
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "dependencies",
+      message:
+        "What does the user need to know about contributing to the repo?",
+      validate: (dependenciesInput) => {
+        if (dependenciesInput) {
+          return true;
+        } else {
+          console.log(
+            "Please enter the user need to know about contributing to the repo!"
+          );
+          return false;
+        }
+      },
+    },
   ]);
 };
 // TODO: Create a function to write README file
@@ -87,7 +134,11 @@ function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {
-  questions().then((answers) => console.log(answers));
+  questions().then((answers) => {
+    console.log(answers);
+    const readMe = generateMarkdown(answers);
+    console.log(readMe);
+  });
 }
 
 // Function call to initialize app

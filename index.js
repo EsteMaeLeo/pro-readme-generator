@@ -146,10 +146,9 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
   questions().then((answers) => {
-    console.log(answers);
     const readMe = generateMarkdown(answers);
     writeToFile(fileName, readMe);
-    console.log(readMe);
+    console.log("README.md Generated");
   });
 }
 

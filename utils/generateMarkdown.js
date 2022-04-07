@@ -61,7 +61,8 @@ function renderLicenseSection(license) {
   }
   switch (license) {
     case "MIT":
-      return "The project is licensed under the MIT license";
+      return `## License 
+      The project is licensed under the MIT license`;
       break;
     case "APACHE 2.0":
       return "The project is licensed under the Apache License";
@@ -83,10 +84,13 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  //get badge image
   let badge = renderLicenseBadge(data.license);
+  //to the image append the badge link
   badge = badge + renderLicenseLink(data.license);
-
+  //get the licence section
   const renderLicense = renderLicenseSection(data.license);
+  //return markdown for the README.md
   return `
 # ${data.title}
 
@@ -99,7 +103,7 @@ ${badge}
 
   - [Installation](#installation)
   - [Usage](#usage)
-  - [License](#license)
+  ${renderLicense["None"] ?? `[License](#license)`}
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
@@ -111,8 +115,7 @@ ${badge}
 ## Usage
 >${data.using}
 
-## License
->${renderLicense}
+${renderLicense}
 
 ## Contributing
 >${data.contributing}
@@ -122,7 +125,11 @@ ${badge}
 - ${data.test}
 
 ## Questions
->If you have any questions about the repo, open an issue or contact me directly at <${data.email}>. Also you can find my excelente work at [${data.github}](https://www.github.com/${data.github})
+>If you have any questions about the repo, open an issue or contact me directly at <${
+    data.email
+  }>. Also you can find my excelente work at [${
+    data.github
+  }](https://www.github.com/${data.github})
 `;
 }
 

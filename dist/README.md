@@ -28,7 +28,7 @@ just use it
       The project is licensed under the MIT license
 
 ## Contributing
- You can contactme by email or linkedln
+You can contactme by email or linkedln
 
 ## Tests
 To run tests, run the following command:

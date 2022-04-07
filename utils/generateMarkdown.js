@@ -65,13 +65,16 @@ function renderLicenseSection(license) {
       The project is licensed under the MIT license`;
       break;
     case "APACHE 2.0":
-      return "The project is licensed under the Apache License";
+      return `## License 
+      The project is licensed under the Apache License`;
       break;
     case "GPL 3.0":
-      return "The project is licensed under the GNU General Public License";
+      return `## License
+      The project is licensed under the GNU General Public License`;
       break;
     case "BSD 3":
-      return "The project is licensed under 3-Clause BSD License";
+      return `## License
+      >The project is licensed under 3-Clause BSD License`;
       break;
     case "None":
       return "None";
@@ -90,6 +93,8 @@ function generateMarkdown(data) {
   badge = badge + renderLicenseLink(data.license);
   //get the licence section
   const renderLicense = renderLicenseSection(data.license);
+
+  const empty = " ";
   //return markdown for the README.md
   return `
 # ${data.title}
@@ -103,29 +108,32 @@ ${badge}
 
   - [Installation](#installation)
   - [Usage](#usage)
-  ${renderLicense["None"] ?? `[License](#license)`}
+  ${renderLicense["None"] ?? `- [License](#license)`}
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
 
 ## Installation
-> To install necessary dependencies, run the following command:
-- ${data.dependencies}
+To install necessary dependencies, run the following command:
+
+> ${data.dependencies}
 
 ## Usage
->${data.using}
+${data.using}
 
-${renderLicense}
+
+${renderLicense["None"] ? "${empty}" : `${renderLicense}`}
 
 ## Contributing
->${data.contributing}
+${data.contributing}
 
 ## Tests
-> To run tests, run the following command:
-- ${data.test}
+To run tests, run the following command:
+
+>${data.test}
 
 ## Questions
->If you have any questions about the repo, open an issue or contact me directly at <${
+If you have any questions about the repo, open an issue or contact me directly at <${
     data.email
   }>. Also you can find my excelente work at [${
     data.github
